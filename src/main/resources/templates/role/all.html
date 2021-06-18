@@ -1,0 +1,14 @@
+<table th:unless="${#lists.isEmpty(roles)}">
+    <tr>
+        <th>N°</th><th>Nom</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${roles}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td><a th:href="@{~/web/v1.0/role/get/{id}(id=${row.roleId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/role/update/{id}(id=${row.roleId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/role/delete/{id}(id=${row.roleId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/role/add}">Add a role</a>

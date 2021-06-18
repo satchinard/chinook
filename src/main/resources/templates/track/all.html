@@ -1,0 +1,22 @@
+<table th:unless="${#lists.isEmpty(tracks)}">
+    <tr>
+        <th>N°</th><th>Nom</th><th>Compositeur</th><th>Durée (en ms)</th>
+        <th>Taille</th><th>Prix unitaire</th><th>Genre</th><th>Type de média</th><th>Album</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${tracks}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td th:text="*{row.composer}">name</td>
+        <td th:text="*{row.milliseconds}">name</td>
+        <td th:text="*{row.bytes}">name</td>
+        <td th:text="*{row.unitPrice}">name</td>
+        <td th:text="*{row.genre.name}">name</td>
+        <td th:text="*{row.mediaType.name}">name</td>
+        <td th:text="*{row.album.title}">name</td>
+        <td><a th:href="@{~/web/v1.0/track/get/{id}(id=${row.trackId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/track/update/{id}(id=${row.trackId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/track/delete/{id}(id=${row.trackId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/track/add}">Add a track</a>

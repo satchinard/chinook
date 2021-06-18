@@ -1,0 +1,14 @@
+<table th:unless="${#lists.isEmpty(genres)}">
+    <tr>
+        <th>N°</th><th>Titre</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${genres}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td><a th:href="@{~/web/v1.0/genre/get/{id}(id=${row.genreId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/genre/update/{id}(id=${row.genreId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/genre/delete/{id}(id=${row.genreId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/genre/add}">Add a genre</a>

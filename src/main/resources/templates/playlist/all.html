@@ -1,0 +1,14 @@
+<table th:unless="${#lists.isEmpty(playlists)}">
+    <tr>
+        <th>N°</th><th>Nom</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${playlists}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td><a th:href="@{~/web/v1.0/playlist/get/{id}(id=${row.playListId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/playlist/update/{id}(id=${row.playListId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/playlist/delete/{id}(id=${row.playListId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/playlist/add}">Add a playlist</a>

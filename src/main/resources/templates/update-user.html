@@ -1,0 +1,12 @@
+<form action="#"
+      th:action="@{/update/{userId}(id=${user.userId})}"
+      th:object="${user}"
+      method="post">
+    <label for="name">Name</label>
+    <input type="text" th:field="*{userName}" id="name" placeholder="Name">
+    <span th:if="${#fields.hasErrors('userName')}" th:errors="*{userName}"></span>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <input type="submit" value="Update User">
+</form>

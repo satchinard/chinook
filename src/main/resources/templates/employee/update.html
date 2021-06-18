@@ -1,0 +1,39 @@
+<form action="#" th:action="@{~/web/v1.0/employee/add}" th:object="${employee}" method="post">
+    <label for="firstName">Prénoms</label>
+    <input type="hidden" th:field="*{employeeId}"/>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="Prénoms">
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+    <br/>
+    <label for="lastName">Nom</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Nom">
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+    <br/>
+    <label for="title">Titre</label>
+    <input type="text" th:field="*{title}" id="title" placeholder="Titre">
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    <br/>
+    <label for="reportsTo">Se rapporte à</label>
+    <input type="text" th:field="*{reportsTo}" id="reportsTo" placeholder="Se rapporte à">
+    <span th:if="${#fields.hasErrors('reportsTo')}" th:errors="*{reportsTo}"></span>
+    <br/>
+    <label for="birthDate">Date de naissance</label>
+    <input type="text" th:field="*{birthDate}" id="birthDate" placeholder="01/01/2001">
+    <span th:if="${#fields.hasErrors('birthDate')}" th:errors="*{birthDate}"></span>
+    <br/>
+    <label for="hireDate">Date d'embauche</label>
+    <input type="text" th:field="*{hireDate}" id="hireDate" placeholder="01/01/2001">
+    <span th:if="${#fields.hasErrors('hireDate')}" th:errors="*{hireDate}"></span>
+    <br/>
+    <label for="artist">Artist</label>
+    <select th:field="*{artist}" id="artist">
+        <option th:each="artist : ${allArtists}"
+                th:value="${artist.artistId}"
+                th:text="${artist.name}">Artist</option>
+    </select>
+    <span th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"></span>
+    <br/>
+
+    <div th:insert="address/add_include"></div>
+
+    <input type="submit" value="Add employee">
+</form>

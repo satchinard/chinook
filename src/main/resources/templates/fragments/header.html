@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Header</title>
+        <div th:fragment="header-css">
+            <!-- header-css -->
+            <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/4.5.2/css/bootstrap.min.css}"/>
+            <link rel="stylesheet" th:href="@{/css/main.css}" href="../../css/main.css"/>
+            <!-- end head-css -->
+        </div>
+    </head>
+    <body>
+        <div th:fragment="header">
+            <!-- header -->
+            <nav class="navbar navbar-inverse">
+                <div class="container">
+                    <div class="navbar-header">
+                        <a class="navbar-brand" th:href="@{/}">Spring Boot</a>
+                    </div>
+                    <div id="navbar" class="navbar-brand">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a th:href="@{/}">Home</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </nav>
+            <!-- end header -->
+        </div>
+    </body>
+</html>

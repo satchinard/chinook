@@ -1,0 +1,19 @@
+<form action="#" th:action="@{~/web/v1.0/invoice/add}" th:object="${invoice}" method="post">
+    <label for="customer">Client</label>
+    <input type="hidden" th:field="*{invoiceId}"/>
+    <select th:field="*{customer}" id="customer">
+        <option th:each="customer : ${allCustomers}"
+                th:value="${customer.customerId}"
+                th:text="${customer.firstName}">customer.firstName</option>
+    </select>
+    <span th:if="${#fields.hasErrors('customer')}" th:errors="*{customer}"></span>
+    <br/>
+    <label for="invoiceDate">Date facture</label>
+    <input type="text" th:field="*{invoiceDate}" id="invoiceDate" placeholder="01/01/2001">
+    <span th:if="${#fields.hasErrors('invoiceDate')}" th:errors="*{invoiceDate}"></span>
+    <br/>
+
+    <div th:insert="address/add_include"></div>
+
+    <input type="submit" value="Add invoice">
+</form>

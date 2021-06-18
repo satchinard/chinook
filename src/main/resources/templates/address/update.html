@@ -1,0 +1,36 @@
+<form action="#" th:action="@{~/web/v1.0/address/add}" th:object="${address}" method="post">
+    <label for="address">Adresse</label>
+    <input type="hidden" th:field="*{addressId}"/>
+    <input type="text" th:field="*{adresse}" id="address" placeholder="Adresse">
+    <span th:if="${#fields.hasErrors('adresse')}" th:errors="*{adresse}"></span>
+    <br/>
+    <label for="city">Ville</label>
+    <input type="text" th:field="*{city}" id="city" placeholder="Ville">
+    <span th:if="${#fields.hasErrors('city')}" th:errors="*{city}"></span>
+    <br/>
+    <label for="state">Etat</label>
+    <input type="text" th:field="*{state}" id="state" placeholder="Etat">
+    <span th:if="${#fields.hasErrors('state')}" th:errors="*{state}"></span>
+    <br/>
+    <label for="country">Pays</label>
+    <input type="text" th:field="*{country}" id="state" placeholder="Pays">
+    <span th:if="${#fields.hasErrors('country')}" th:errors="*{country}"></span>
+    <br/>
+    <label for="postalCode">Boite postale</label>
+    <input type="text" th:field="*{postalCode}" id="state" placeholder="Boite postale">
+    <span th:if="${#fields.hasErrors('postalCode')}" th:errors="*{postalCode}"></span>
+    <br/>
+    <label for="phone">Telephone</label>
+    <input type="text" th:field="*{phone}" id="state" placeholder="+228 89689587">
+    <span th:if="${#fields.hasErrors('phone')}" th:errors="*{phone}"></span>
+    <br/>
+    <label for="fax">Fax</label>
+    <input type="text" th:field="*{fax}" id="state" placeholder="Fax">
+    <span th:if="${#fields.hasErrors('fax')}" th:errors="*{fax}"></span>
+    <br/>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="state" placeholder="exemple@exemple.com">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <br/>
+    <input type="submit" value="Add address">
+</form>

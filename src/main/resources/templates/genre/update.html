@@ -1,0 +1,8 @@
+<form action="#" th:action="@{~/web/v1.0/genre/add}" th:object="${genre}" method="post">
+    <label for="genre">Titre</label>
+    <input type="hidden" th:field="*{genreId}"/>
+    <input type="text" th:field="*{name}" id="genre" placeholder="Nom">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br/>
+    <input type="submit" value="Update genre">
+</form>

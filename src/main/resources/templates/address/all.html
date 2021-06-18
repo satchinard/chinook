@@ -1,0 +1,23 @@
+<table th:unless="${#lists.isEmpty(adresses)}">
+    <tr>
+        <th>N°</th><th>Adresse</th><th>Ville</th><th>Etat</th>
+        <th>Pays</th><th>Boite postale</th><th>Téléphone</th><th>Fax</th>
+        <th>Email</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${adresses}">
+        <td th:text="*{rowStat.count}">addressId</td>
+        <td th:text="*{row.adresse}">adresse</td>
+        <td th:text="*{row.city}">city</td>
+        <td th:text="*{row.state}">state</td>
+        <td th:text="*{row.country}">country</td>
+        <td th:text="*{row.postalCode}">postalCode</td>
+        <td th:text="*{row.phone}">phone</td>
+        <td th:text="*{row.fax}">fax</td>
+        <td th:text="*{row.email}">email</td>
+        <td><a th:href="@{~/web/v1.0/address/get/{id}(id=${row.addressId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/address/update/{id}(id=${row.addressId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/address/delete/{id}(id=${row.addressId})}">Delete</a></td>
+    </tr>
+</table>
+<!--<a th:href="@{~/web/v1.0/address/add}">Add an address</a>-->

@@ -1,0 +1,26 @@
+<table th:unless="${#lists.isEmpty(employees)}">
+    <tr>
+        <th>N°</th><th>Prénoms</th><th>Nom</th><th>Titre</th>
+        <th>Se reporte à</th><th>Date de naissance</th><th>Date d'embauche</th>
+        <th>Addresse</th><th>Téléphone</th><th>Email</th><th>Artiste</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr>
+    <tr th:each="row, rowStat : ${employees}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.firstName}">firstName</td>
+        <td th:text="*{row.lastName}">lastName</td>
+        <td th:text="*{row.title}">title</td>
+        <td th:text="*{row.reportsTo}">reportsTo</td>
+        <td th:text="*{row.birthDate}">birthDate</td>
+        <td th:text="*{row.hireDate}">hireDate</td>
+        <td th:text="*{row.address.adresse}">address.adresse</td>
+        <td th:text="*{row.address.phone}">address.phone</td>
+        <td th:text="*{row.address.email}">address.email</td>
+        <td th:text="*{row.artist.name}">artist.name</td>
+        <td><a th:href="@{~/web/v1.0/employee/get/{id}(id=${row.employeeId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/employee/update/{id}(id=${row.employeeId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/employee/delete/{id}(id=${row.employeeId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/employee/add}">Add an employee</a>

@@ -1,0 +1,14 @@
+<table th:unless="${#lists.isEmpty(artists)}">
+    <tr>
+        <th>N°</th><th>Titre</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${artists}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td><a th:href="@{~/web/v1.0/artist/get/{id}(id=${row.artistId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/artist/update/{id}(id=${row.artistId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/artist/delete/{id}(id=${row.artistId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/artist/add}">Add an artist</a>

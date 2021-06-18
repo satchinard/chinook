@@ -1,0 +1,8 @@
+<form action="#" th:action="@{~/web/v1.0/privilege/add}" th:object="${privilege}" method="post">
+    <label for="name">Nom</label>
+    <input type="hidden" th:field="*{privilegeId}"/>
+    <input type="text" th:field="*{name}" id="name" placeholder="Nom">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br/>
+    <input type="submit" value="Add privilege">
+</form>

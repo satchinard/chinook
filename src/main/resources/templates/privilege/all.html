@@ -1,0 +1,14 @@
+<table th:unless="${#lists.isEmpty(privileges)}">
+    <tr>
+        <th>N°</th><th>Nom</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${privileges}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td><a th:href="@{~/web/v1.0/privilege/get/{id}(id=${row.privilegeId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/privilege/update/{id}(id=${row.privilegeId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/privilege/delete/{id}(id=${row.privilegeId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/privilege/add}">Add a privilege</a>

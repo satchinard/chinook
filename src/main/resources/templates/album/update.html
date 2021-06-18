@@ -1,0 +1,17 @@
+<form action="#" th:action="@{~/web/v1.0/album/add}" th:object="${album}" method="post">
+    <label for="album">Titre</label>
+    <input type="hidden" th:field="*{albumId}"/>
+    <input type="text" th:field="*{title}" id="album" placeholder="Titre">
+    <span th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></span>
+    <br/>
+    <label for="artist">Artist</label>
+    <select th:field="*{artist}" id="artist">
+        <option th:each="art : ${allArtists}"
+                th:value="${art.artistId}"
+                th:text="${art.name}"
+                th:selected="${art==artist}">Artist</option>
+    </select>
+    <span th:if="${#fields.hasErrors('artist')}" th:errors="*{artist}"></span>
+    <br/>
+    <input type="submit" value="Update album">
+</form>

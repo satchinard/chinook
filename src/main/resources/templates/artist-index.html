@@ -1,0 +1,23 @@
+<div th:switch="${artists}">
+    <h2 th:case="null">No artists yet!</h2>
+    <div th:case="*">
+        <h2>Artists</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="artist : ${artists}">
+                    <td th:text="${artist.name}"></td>
+                    <td><a th:href="@{~/web/v1.0/artist/s/edit/{id}(id=${artist.artistId})}">Edit</a></td>
+                    <td><a th:href="@{~/web/v1.0/artist/s/delete/{id}(id=${artist.artistId})}">Delete</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <p><a href="/web/v1.0/artist/s/inscription">Add a new artist</a></p>
+</div>

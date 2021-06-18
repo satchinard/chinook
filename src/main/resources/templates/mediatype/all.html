@@ -1,0 +1,14 @@
+<table th:unless="${#lists.isEmpty(mediatypes)}">
+    <tr>
+        <th>N°</th><th>Nom</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${mediatypes}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.name}">name</td>
+        <td><a th:href="@{~/web/v1.0/mediatype/get/{id}(id=${row.mediaTypeId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/mediatype/update/{id}(id=${row.mediaTypeId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/mediatype/delete/{id}(id=${row.mediaTypeId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/mediatype/add}">Add a mediaType</a>

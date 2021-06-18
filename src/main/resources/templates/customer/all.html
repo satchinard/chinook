@@ -1,0 +1,27 @@
+<table th:unless="${#lists.isEmpty(customers)}">
+    <tr>
+        <th>N°</th><th>Prénoms</th><th>Nom</th><th>Compagnie</th>
+        <th>Adresse</th><th>Ville</th><th>Etat</th>
+        <th>Pays</th><th>Boite postale</th><th>Téléphone</th>
+        <th>Fax</th><th>Email</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${customers}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.firstName}">title</td>
+        <td th:text="*{row.lastName}">title</td>
+        <td th:text="*{row.company}">title</td>
+        <td th:text="*{row.address.adresse}">adresse</td>
+        <td th:text="*{row.address.city}">city</td>
+        <td th:text="*{row.address.state}">state</td>
+        <td th:text="*{row.address.country}">country</td>
+        <td th:text="*{row.address.postalCode}">postalCode</td>
+        <td th:text="*{row.address.phone}">phone</td>
+        <td th:text="*{row.address.fax}">fax</td>
+        <td th:text="*{row.address.email}">email</td>
+        <td><a th:href="@{~/web/v1.0/customer/get/{id}(id=${row.customerId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/customer/update/{id}(id=${row.customerId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/customer/delete/{id}(id=${row.customerId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/customer/add}">Add a customer</a>

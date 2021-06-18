@@ -1,0 +1,32 @@
+<form action="#" th:action="@{~/web/v1.0/user/add}" th:object="${user}" method="post">
+    <label for="username">Login</label>
+    <input type="hidden" th:field="*{userId}"/>
+    <input type="text" th:field="*{username}" id="username" placeholder="Nom">
+    <span th:if="${#fields.hasErrors('username')}" th:errors="*{username}"></span>
+    <br/>
+    <label for="password">Mot de passe</label>
+    <input type="password" th:field="*{password}" id="password" placeholder="Mot de passe">
+    <span th:if="${#fields.hasErrors('password')}" th:errors="*{password}"></span>
+    <br/>
+    <label for="firstName">Prénoms</label>
+    <input type="text" th:field="*{firstName}" id="firstName" placeholder="Prénoms">
+    <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
+    <br/>
+    <label for="lastName">Nom</label>
+    <input type="text" th:field="*{lastName}" id="lastName" placeholder="Nom">
+    <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
+    <br/>
+    <label for="email">Email</label>
+    <input type="text" th:field="*{email}" id="email" placeholder="Email">
+    <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+    <br/>
+    <label for="roles">Roles</label>
+    <select th:field="*{roles}" multiple="multiple">
+        <option th:each="role : ${allRoles}"
+                th:value="${role.roleId}"
+                th:text="${role.name}"></option>
+    </select>
+    <span th:if="${#fields.hasErrors('roles')}" th:errors="*{roles}"></span>
+    <br/>
+    <input type="submit" value="Add user">
+</form>

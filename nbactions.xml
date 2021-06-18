@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+    <action>
+        <actionName>CUSTOM-cleanUpdateSkip</actionName>
+        <displayName>cleanUpdateSkipPurge</displayName>
+        <goals>
+            <goal>clean</goal>
+            <goal>install</goal>
+            <goal>-U</goal>
+            <goal>-DskipTests</goal>
+            <goal>dependency:purge-local-repository</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-cleanUpdateSkip</actionName>
+        <displayName>cleanUpdateSkip</displayName>
+        <goals>
+            <goal>clean</goal>
+            <goal>install</goal>
+            <goal>-U</goal>
+            <goal>-DskipTests</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>run</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+        </goals>
+        <properties>
+            <exec.args>-Ddebug=true -classpath %classpath com.adn.chinook.ChinookApplication</exec.args>
+            <exec.executable>java</exec.executable>
+        </properties>
+    </action>
+    <action>
+        <actionName>debug</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+        </goals>
+        <properties>
+            <exec.args>-agentlib:jdwp=transport=dt_socket,server=n,address=${jpda.address} -Ddebug=true -classpath %classpath com.adn.chinook.ChinookApplication</exec.args>
+            <exec.executable>java</exec.executable>
+            <jpda.listen>true</jpda.listen>
+        </properties>
+    </action>
+    <action>
+        <actionName>profile</actionName>
+        <packagings>
+            <packaging>jar</packaging>
+        </packagings>
+        <goals>
+            <goal>process-classes</goal>
+            <goal>org.codehaus.mojo:exec-maven-plugin:1.5.0:exec</goal>
+        </goals>
+        <properties>
+            <exec.args>-Ddebug=true -classpath %classpath com.adn.chinook.ChinookApplication</exec.args>
+            <exec.executable>java</exec.executable>
+        </properties>
+    </action>
+    <action>
+        <actionName>CUSTOM-version</actionName>
+        <displayName>version</displayName>
+        <goals>
+            <goal>versions:display-dependency-updates</goal>
+        </goals>
+    </action>
+    <action>
+        <actionName>CUSTOM-versionUpdate</actionName>
+        <displayName>versionUpdate</displayName>
+        <goals>
+            <goal>versions:use-next-releases</goal>
+            <goal>clean</goal>
+            <goal>install</goal>
+        </goals>
+    </action>
+
+</actions>

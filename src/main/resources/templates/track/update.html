@@ -1,0 +1,52 @@
+<form action="#" th:action="@{~/web/v1.0/track/add}" th:object="${track}" method="post">
+    <label for="name">Nom</label>
+    <input type="hidden" th:field="*{trackId}"/>
+    <input type="text" th:field="*{name}" id="name" placeholder="Nom">
+    <span th:if="${#fields.hasErrors('name')}" th:errors="*{name}"></span>
+    <br/>
+    <label for="composer">Compositeur</label>
+    <input type="text" th:field="*{composer}" id="composer" placeholder="Compositeur">
+    <span th:if="${#fields.hasErrors('composer')}" th:errors="*{composer}"></span>
+    <br/>
+    <label for="milliseconds">Durée (ms)</label>
+    <input type="text" th:field="*{milliseconds}" id="milliseconds" placeholder="15ms">
+    <span th:if="${#fields.hasErrors('milliseconds')}" th:errors="*{milliseconds}"></span>
+    <br/>
+    <label for="bytes">Taille</label>
+    <input type="text" th:field="*{bytes}" id="bytes" placeholder="128">
+    <span th:if="${#fields.hasErrors('bytes')}" th:errors="*{bytes}"></span>
+    <br/>
+    <label for="unitPrice">Prix unitaire</label>
+    <input type="text" th:field="*{unitPrice}" id="unitPrice" placeholder="Prix unitaire">
+    <span th:if="${#fields.hasErrors('unitPrice')}" th:errors="*{unitPrice}"></span>
+    <br/>
+
+    <label for="genre">Genre</label>
+    <select th:field="*{genre}" id="genre">
+        <option th:each="genre : ${allGenres}"
+                th:value="${genre.genreId}"
+                th:text="${genre.name}">Genre</option>
+    </select>
+    <span th:if="${#fields.hasErrors('genre')}" th:errors="*{genre}"></span>
+    <br/>
+
+    <label for="mediaType">Type de média</label>
+    <select th:field="*{mediaType}" id="mediaType">
+        <option th:each="mediaType : ${allMediaTypes}"
+                th:value="${mediaType.mediaTypeId}"
+                th:text="${mediaType.name}">Genre</option>
+    </select>
+    <span th:if="${#fields.hasErrors('mediaType')}" th:errors="*{mediaType}"></span>
+    <br/>
+
+    <label for="album">Album</label>
+    <select th:field="*{album}" id="album">
+        <option th:each="album : ${allAlbums}"
+                th:value="${album.albumId}"
+                th:text="${album.title}">Genre</option>
+    </select>
+    <span th:if="${#fields.hasErrors('album')}" th:errors="*{album}"></span>
+    <br/>
+
+    <input type="submit" value="Add track">
+</form>

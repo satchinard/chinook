@@ -1,0 +1,31 @@
+<table th:unless="${#lists.isEmpty(users)}">
+    <tr>
+        <th>N°</th>
+        <th>Login</th>
+        <th>Prénoms</th>
+        <th>Nom</th>
+        <th>Email</th>
+        <th>Activé ?</th>
+        <th>Expiré ?</th>
+        <th>Blocké ?</th>
+        <th>Mot de passe expiré ?</th>
+        <th>Jeton expiré ?</th>
+        <th colspan="3">Actions</th>
+    </tr>
+    <tr th:each="row, rowStat : ${users}">
+        <td th:text="*{rowStat.count}">count</td>
+        <td th:text="*{row.username}">name</td>
+        <td th:text="*{row.firstName}">name</td>
+        <td th:text="*{row.lastName}">name</td>
+        <td th:text="*{row.email}">name</td>
+        <td th:text="*{row.enabled}">name</td>
+        <td th:text="*{row.accountNonExpired}">name</td>
+        <td th:text="*{row.accountNonLocked}">name</td>
+        <td th:text="*{row.credentialsNonExpired}">name</td>
+        <td th:text="*{row.tokenExpired}">name</td>
+        <td><a th:href="@{~/web/v1.0/user/get/{id}(id=${row.userId})}">View</a></td>
+        <td><a th:href="@{~/web/v1.0/user/update/{id}(id=${row.userId})}">Update</a></td>
+        <td><a th:href="@{~/web/v1.0/user/delete/{id}(id=${row.userId})}">Delete</a></td>
+    </tr>
+</table>
+<a th:href="@{~/web/v1.0/user/add}">Add an user</a>
